@@ -1,6 +1,6 @@
 ---
 applications:
-- name: sleep_api
+- name: becas_api
   memory: 250M
   instances: 1
   buildpack: python_buildpack

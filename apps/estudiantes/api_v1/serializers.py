@@ -14,7 +14,7 @@ class EstudianteSerialize:
         return data
 
 
-class EstudiantessSerialize:
+class EstudiantesSerialize:
 
     @staticmethod
     def serialize(estudiantes):
