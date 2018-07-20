@@ -23,7 +23,7 @@ class EstudianteListCreateView:
         return body, status
 
     @serialize_exceptions
-    def get(self, page_size=None, page=None):
+    def get(self, page_size=None, page=None, tipo=None):
         """
         :param page_size: El tamaño de la paginación
         :param page: Número de página que desea consultar
@@ -33,7 +33,8 @@ class EstudianteListCreateView:
         cleaned_data = custom_pagination.cleaned_data()
         estudiantes, pagination_data = self.get_all_estudiantes_interactor.set_params(
             page_size=cleaned_data.get('page_size'),
-            page=cleaned_data.get('page')
+            page=cleaned_data.get('page'),
+            tipo=tipo
         ).execute()
         body = custom_pagination.set_params(queryset=EstudiantesSerialize.serialize(estudiantes),
                                             count=pagination_data.get('count'),

@@ -20,8 +20,11 @@ class EstudianteRepository:
                                                   tipo=estudiante.tipo)
         return self._decode_db_estudiante(db_estudiante)
 
-    def get_all_estudiantes(self, page_size, page):
-        queryset = ORMEstudiante.objects.order_by('apellido_paterno', 'apellido_materno', 'nombre')
+    def get_all_estudiantes(self, page_size, page, tipo):
+        if tipo:
+            queryset = ORMEstudiante.objects.filter(tipo=tipo)
+        else:
+            queryset = ORMEstudiante.objects.all()
         paginator = Paginator(queryset, page_size)
         try:
             queryset = paginator.page(page)

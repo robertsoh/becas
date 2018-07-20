@@ -26,10 +26,11 @@ class GetAllEstudiantesInteractor:
     def __init__(self, estudiante_repository):
         self.estudiante_repository = estudiante_repository
 
-    def set_params(self, page_size, page):
+    def set_params(self, page_size, page, tipo=None):
         self.page_size = page_size
         self.page = page
+        self.tipo = tipo
         return self
 
     def execute(self):
-        return self.estudiante_repository.get_all_estudiantes(page_size=self.page_size, page=self.page)
+        return self.estudiante_repository.get_all_estudiantes(page_size=self.page_size, page=self.page, tipo=self.tipo)
