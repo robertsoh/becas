@@ -1,0 +1,1 @@
+web: gunicorn becas.wsgi --workers 1
